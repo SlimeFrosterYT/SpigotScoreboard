@@ -1,0 +1,51 @@
+
+# SCOREBOARD SKRIPT
+# MADE BY: SlimeFrosterYT
+# LICENSE: DO NOT COPY
+
+# REQUIRED PLUGINS:
+# Skript = https://github.com/SkriptLang/Skript/releases
+# Skbee = https://github.com/ShaneBeee/SkBee/releases/tag/3.0.1
+# Luckperms = https://luckperms.net/
+
+on player join:
+    if {deaths::%player's uuid%} is not set:
+        set {deaths::%player's uuid%} to 0
+    if {kills::%player's uuid%} is not set:
+        set {kills::%player's uuid%} to 0
+    while player is online:
+        clear player's scoreboard
+        set title of player's scoreboard to "  &8&l⊂ SERVER NAME ⊃"
+        set line 1 of player's scoreboard to "  SERVER IP"
+        set line 2 of player's scoreboard to "&7&l-----------------------"
+        set line 3 of player's scoreboard to "  &8&l» &7&lOnline: %size of players%/500" # CHANGE 500 TO THE MAX AMOUNT OF PLAYERS ALLOWED ON YOUR SERVER 
+        set line 4 of player's scoreboard to "  &8&l» &b&lRank: %player's prefix%" # GO TO L1 TO SET PLAYER'S PREFIX
+        set line 5 of player's scoreboard to "  &8&l» &e&lPlayer: &e&l%player%"
+        set line 6 of player's scoreboard to "&e&lStats: "
+        wait 1 second
+on death:
+    attacker is not a player:
+        add 1 to {kills::%attacker's uuid%}
+
+on death:
+    victim is not a player:
+        add 1 to {deaths::%victim's uuid%}
+
+# COLOUR CODE:
+# &e = Yellow
+# &d = Purple
+# &f = White
+# &l = Bold
+
+# LOOK AT CHAT CODES ON THIS WEBSITE! https://htmlcolorcodes.com/minecraft-color-codes/
+
+# Example: &d&l = IMPURPLEANDBOLD
+
+L1:
+
+# To set a player's prefix first make sure you have the required plugins. Once you
+# have the required plugins in your minecraft server type /lp user USERNAME meta setprefix PREFIX
+
+# USERNAME = any persons username in-game
+
+# PREFIX = any prefix (RANK) you want, example, &c&l[Owner] the text and brackets will be bold red
